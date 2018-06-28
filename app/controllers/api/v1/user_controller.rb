@@ -1,6 +1,4 @@
 class Api::V1::UserController < ApplicationController
-  before_action :requires_login, only: [:users_snacks]
-  before_action :requires_user_match, only: [:users_snacks]
 
   def create
     @user = User.new
@@ -18,10 +16,8 @@ class Api::V1::UserController < ApplicationController
     else
       render json: {
         errors: @user.errors.full_messages
-        }, status: :unprocessable_entity
-      end
+      }, status: :unprocessable_entity
     end
-
   end
-  
+
 end

@@ -48,4 +48,6 @@ gem 'jwt'
 
 gem 'pry'
 
-gem "dotenv-rails"
+gem 'dotenv-rails'
+
+gem 'rest-client', '~> 2.0.2'
