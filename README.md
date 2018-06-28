@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. Run 'bundle' for the gemfile
 
-Things you may want to cover:
+2. Create a file called .env and it should look something like this:
 
-* Ruby version
+  JWT_SECRET=asdfasdfjhadjklfhdaks;lfjdjklafhkds
 
-* System dependencies
+3. Run 'rake db:create db:migrate db:seed' to get the seed data
+# Or if you want to recreate the databases for this project:
+# rake db:drop db:create db:migrate db:seed
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+4. Run 'rails s' to start the application
+# Or to run on a different port:
+# rails s -p 5000
