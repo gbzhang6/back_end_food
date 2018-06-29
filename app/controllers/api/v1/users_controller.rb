@@ -1,10 +1,7 @@
 class Api::V1::UsersController < ApplicationController
 
   def create
-    @user = User.new
-
-    @user.username = params[:username]
-    @user.password = params[:password]
+    @user = User.new(username: params[:username], password: params[:password])
 
     if (@user.save)
       token = generate_token
@@ -20,4 +17,9 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  private
+
+  def user_params
+    #
+  end
 end
