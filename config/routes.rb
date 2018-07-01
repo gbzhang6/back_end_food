@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :users, only: [:create]
+      resources :users, only: [:index, :create]
       resources :restaurants, only: [:index, :create, :show]
       resources :comments, only: [:index, :create]
       resources :matches, only: [:index, :create, :show, :destory]

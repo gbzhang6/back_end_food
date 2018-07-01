@@ -1,5 +1,10 @@
 class Api::V1::UsersController < ApplicationController
 
+  def index
+    @users = User.all
+    render json: @users
+  end
+
   def create
     @user = User.new(username: params[:username], password: params[:password])
 
@@ -8,7 +13,8 @@ class Api::V1::UsersController < ApplicationController
 
       render json: {
         token: token,
-        id: @user.id
+        id: @user.id,
+        password: @user.password_digest,
       }
     else
       render json: {
@@ -20,6 +26,6 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def user_params
-    #
+    params.require(:user).permit(:username, :password)
   end
 end
