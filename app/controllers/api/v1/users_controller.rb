@@ -6,15 +6,17 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(username: params[:username], password: params[:password])
+      @user = User.new(user_params)
 
+      @user.username = params[:username]
+      @user.password = params[:password]
     if (@user.save)
       token = generate_token
 
       render json: {
         token: token,
         id: @user.id,
-        password: @user.password_digest,
+        password: @user.password,
       }
     else
       render json: {
@@ -26,6 +28,6 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.permit(:username, :password)
   end
 end
