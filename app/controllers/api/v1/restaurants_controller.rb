@@ -12,4 +12,13 @@ class Api::V1::RestaurantsController < ApplicationController
 
   def show
   end
+
+  def filtered
+    q = params[:searchTerm]
+    query = q.downcase
+
+    @restaurants = makeFetchHappen(query)
+
+   render json: @restaurants
+  end
 end

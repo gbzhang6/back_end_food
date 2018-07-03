@@ -5,7 +5,7 @@ require "optparse"
 
 # Place holders for Yelp Fusion's API key. Grab it
 # from https://www.yelp.com/developers/v3/manage_app
-API_KEY = 'dB55GqYAw5446_uVnSQUH6wQIZ7VokBiMq2lGRVJFaH9NC_cCL1juM1ipmClU8mtBB7WOqsgHChb_vhn7KggWPBCPVlfsOZ1ud48saCMevm1k_Z27FGDrzs6nQoxW3Yx'
+API_KEY =
 
 # Constants, do not change these
 API_HOST = "https://api.yelp.com"
