@@ -52,3 +52,7 @@ gem 'pry'
 gem 'dotenv-rails'
 
 gem 'rest-client', '~> 2.0.2'
+
+gem 'http'
+
+gem 'json'

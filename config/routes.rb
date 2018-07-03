@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
+      get '/restaurants/yelpSearch'
       resources :users, only: [:index, :create]
       resources :restaurants, only: [:index, :create, :show]
       resources :comments, only: [:index, :create]
@@ -8,7 +9,6 @@ Rails.application.routes.draw do
 
       post '/sessions/', to: 'sessions#create'
       get '/sessions/', to: 'sessions#show'
-      get '/restaurants/:searchTerm', to: 'restaurants#filtered'
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
