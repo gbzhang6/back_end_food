@@ -31,7 +31,8 @@ SEARCH_LIMIT = 50
     params = {
       term: term,
       location: location,
-      limit: SEARCH_LIMIT
+      limit: SEARCH_LIMIT,
+      open_now: true,
     }
 
     response = HTTP.auth("Bearer #{API_KEY}").get(url, params: params)
