@@ -9,9 +9,6 @@ API_HOST = "https://api.yelp.com"
 SEARCH_PATH = "/v3/businesses/search"
 BUSINESS_PATH = "/v3/businesses/"
 
-DEFAULT_BUSINESS_ID = "yelp-san-francisco"
-DEFAULT_TERM = "Bar"
-DEFAULT_LOCATION = "New York, NY"
 SEARCH_LIMIT = 50
 
   def index
@@ -25,32 +22,21 @@ SEARCH_LIMIT = 50
   def show
   end
 
-  def yelpSearch(term=DEFAULT_TERM, location=DEFAULT_LOCATION)
-
+  def yelpSearch
     url = "#{API_HOST}#{SEARCH_PATH}"
-    params = {
-      term: term,
-      location: location,
+    yelp_params = {
+      term: params[:term],
+      location: params[:location],
       limit: SEARCH_LIMIT,
       open_now: true,
     }
 
-    response = HTTP.auth("Bearer #{API_KEY}").get(url, params: params)
+    response = HTTP.auth("Bearer #{API_KEY}").get(url, params: yelp_params)
     results = response.parse
 
     render json:{
       results: results,
       status: :accepted}
   end
-
-  def filtered
-    q = params[:searchTerm]
-    query = q.downcase
-
-    @restaurants = makeFetchHappen(query)
-
-   render json: @restaurants
-  end
-
 
 end
