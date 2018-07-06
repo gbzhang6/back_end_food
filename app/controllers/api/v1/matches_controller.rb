@@ -6,18 +6,19 @@ class Api::V1::MatchesController < ApplicationController
   end
 
   def create
+    get_decoded_token
     @match = Match.new(match_params)
 
     @match.restaurant_id = params[:restaurant_id]
     @match.user_id = params[:user_id]
     if (@match.save)
       render json: {
-        restaurant_id: @match.restaurant_id,
-        user_id: @match.user_id,
+        id: @match.id
       }
     else
-      flash[:error] = 'Failed to edit match!'
-      render :new
+      render json: {
+        errors: "Those credentials don't match anything we have in our database"
+      }, status: :unprocessable_entity
     end
   end
 

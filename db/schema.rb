@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2018_06_27_202723) do
 
   create_table "matches", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "restuarant_id"
+    t.integer "restaurant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
