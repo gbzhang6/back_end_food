@@ -9,7 +9,7 @@ API_HOST = "https://api.yelp.com"
 SEARCH_PATH = "/v3/businesses/search"
 BUSINESS_PATH = "/v3/businesses/"
 
-SEARCH_LIMIT = 50
+SEARCH_LIMIT = 10
 
   def index
     @restaurants = Restaurant.all
