@@ -8,9 +8,11 @@ class Api::V1::MatchesController < ApplicationController
   def create
     get_decoded_token
     @match = Match.new(match_params)
-
+    byebug
+    # Restaurant.find_or_create_by(restaurant_obj)
     @match.restaurant_id = params[:restaurant_id]
     @match.user_id = params[:user_id]
+    byebug
     if (@match.save)
       render json: {
         id: @match.id
@@ -31,7 +33,7 @@ class Api::V1::MatchesController < ApplicationController
   private
 
   def match_params
-    params.permit(:user_id, :restaurant_id)
+    params.permit(:user_id, :restaurant_id, :)
   end
 
 end
