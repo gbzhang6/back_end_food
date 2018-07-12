@@ -17,6 +17,7 @@ class Api::V1::MatchesController < ApplicationController
       photos:'',
       longitude:params[:restaurant][:coordinates][:longitude],
       latitude:params[:restaurant][:coordinates][:latitude],
+      reviews:'',
     )
     @match = Match.new(user_id:params[:user_id], restaurant_id: @restaurant.id)
     # @match.restaurant_id = params[:restaurant_id]

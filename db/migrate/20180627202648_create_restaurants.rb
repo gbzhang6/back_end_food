@@ -11,6 +11,7 @@ class CreateRestaurants < ActiveRecord::Migration[5.2]
       t.string :photos
       t.decimal :longitude
       t.decimal :latitude
+      t.string :reviews
 
       t.timestamps
     end

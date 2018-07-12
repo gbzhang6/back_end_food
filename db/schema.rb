@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2018_06_27_202723) do
     t.string "photos"
     t.decimal "longitude"
     t.decimal "latitude"
+    t.string "reviews"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
