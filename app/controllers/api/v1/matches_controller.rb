@@ -26,6 +26,7 @@ class Api::V1::MatchesController < ApplicationController
         id: @match.id,
         restaurant_id: @match.restaurant_id,
         user_id: @match.user_id,
+        restaurant: @match.restaurant,
       }
     else
       render json: {
@@ -35,10 +36,14 @@ class Api::V1::MatchesController < ApplicationController
   end
 
   def show
-
+    @match = Match.find_by_id(params[:id])
+    render json: @match
   end
 
   def destroy
+    Match.destroy(params[:restaurant_id])
+    @Matches = Match.where(user_id: params[:user_id])
+    render json: @Matches
   end
 
   private

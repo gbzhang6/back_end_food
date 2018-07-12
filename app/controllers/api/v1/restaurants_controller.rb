@@ -8,6 +8,7 @@ API_KEY = ENV['YELP_KEY']
 API_HOST = "https://api.yelp.com"
 SEARCH_PATH = "/v3/businesses/search"
 BUSINESS_PATH = "/v3/businesses/"
+DEFAULT_LOCATION = 'New York, NY'
 
 SEARCH_LIMIT = 50
 
@@ -23,10 +24,12 @@ SEARCH_LIMIT = 50
   end
 
   def yelpSearch
+
     url = "#{API_HOST}#{SEARCH_PATH}"
     yelp_params = {
       term: params[:term],
       location: params[:location],
+      price: params[:price],
       limit: SEARCH_LIMIT,
       open_now: true,
     }
@@ -36,6 +39,18 @@ SEARCH_LIMIT = 50
 
     render json:{
       results: results,
+      status: :accepted}
+  end
+
+  def yelpDetails
+
+    url = "#{API_HOST}#{BUSINESS_PATH}#{params[:term]}"
+
+    response = HTTP.auth("Bearer #{API_KEY}").get(url)
+    result = response.parse
+
+    render json:{
+      result: result,
       status: :accepted}
   end
 
